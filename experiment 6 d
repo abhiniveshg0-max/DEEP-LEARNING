@@ -1,0 +1,94 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPzdWhY9++4X0hs3uunfCaL",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/abhiniveshg0-max/DEEP-LEARNING/blob/main/experiment%206%20d\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "95634bbc",
+        "outputId": "e7a720e1-ea03-4957-dcc6-f93c5d10f5e9"
+      },
+      "source": [
+        "import tensorflow as tf\n",
+        "from tensorflow.keras.datasets import imdb\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences\n",
+        "\n",
+        "# Set the vocabulary size and max sequence length\n",
+        "vocab_size = 10000\n",
+        "max_length = 250\n",
+        "\n",
+        "# Load IMDB dataset\n",
+        "print(\"Loading IMDB dataset...\")\n",
+        "(x_train_raw, y_train), (x_test_raw, y_test) = imdb.load_data(num_words=vocab_size)\n",
+        "\n",
+        "# Pad sequences to ensure uniform length\n",
+        "print(\"Padding sequences...\")\n",
+        "x_train = pad_sequences(x_train_raw, maxlen=max_length, padding=\"post\", truncating=\"post\")\n",
+        "x_test = pad_sequences(x_test_raw, maxlen=max_length, padding=\"post\", truncating=\"post\")\n",
+        "\n",
+        "# Recreate a simple tokenizer or index mapper for mapping the custom sample reviews later\n",
+        "word_index = imdb.get_word_index()\n",
+        "# Adjust the word index because the dataset is already offset by 3\n",
+        "word_index = {k: (v + 3) for k, v in word_index.items()}\n",
+        "word_index[\"<PAD>\"] = 0\n",
+        "word_index[\"<START>\"] = 1\n",
+        "word_index[\"<UNK>\"] = 2\n",
+        "word_index[\"<UNUSED>\"] = 3\n",
+        "\n",
+        "class SimpleTokenizer:\n",
+        "    def __init__(self, word_index):\n",
+        "        self.word_index = word_index\n",
+        "\n",
+        "    def texts_to_sequences(self, texts):\n",
+        "        sequences = []\n",
+        "        for text in texts:\n",
+        "            words = text.lower().replace('.', '').replace(',', '').split()\n",
+        "            seq = [self.word_index.get(w, 2) for w in words] # 2 is <UNK>\n",
+        "            sequences.append(seq)\n",
+        "        return sequences\n",
+        "\n",
+        "tokenizer = SimpleTokenizer(word_index)\n",
+        "print(\"Data preparation complete. Variables 'x_train', 'y_train', 'x_test', 'y_test', 'tokenizer', and 'max_length' are now defined.\")"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Loading IMDB dataset...\n",
+            "Padding sequences...\n",
+            "Data preparation complete. Variables 'x_train', 'y_train', 'x_test', 'y_test', 'tokenizer', and 'max_length' are now defined.\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
