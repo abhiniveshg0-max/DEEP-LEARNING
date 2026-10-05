@@ -33,7 +33,7 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "95634bbc",
-        "outputId": "e7a720e1-ea03-4957-dcc6-f93c5d10f5e9"
+        "outputId": "be0fbf4e-1fc4-45f3-f83f-2692111e7df3"
       },
       "source": [
         "import tensorflow as tf\n",
@@ -77,7 +77,7 @@
         "tokenizer = SimpleTokenizer(word_index)\n",
         "print(\"Data preparation complete. Variables 'x_train', 'y_train', 'x_test', 'y_test', 'tokenizer', and 'max_length' are now defined.\")"
       ],
-      "execution_count": 4,
+      "execution_count": 5,
       "outputs": [
         {
           "output_type": "stream",
