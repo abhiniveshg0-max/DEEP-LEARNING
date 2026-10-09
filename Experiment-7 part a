@@ -1,0 +1,90 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMLmiXI0jsaQkwcRmKKZKgS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/abhiniveshg0-max/DEEP-LEARNING/blob/main/Experiment-7%20part%20a\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tYLHNBY0EmeF",
+        "outputId": "b50cf113-d72b-4a31-8096-2d6842debef4"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "MNIST Dataset Loaded Successfully\n",
+            "----------------------------------------\n",
+            "Training images shape: (60000, 28, 28)\n",
+            "Training labels shape: (60000,)\n",
+            "Testing images shape: (10000, 28, 28)\n",
+            "Testing labels shape: (10000,)\n",
+            "Total training images: 60000\n",
+            "Total testing images: 10000\n",
+            "Total images: 70000\n",
+            "Image height: 28\n",
+            "Image width: 28\n",
+            "Number of classes: 10\n",
+            "Digit classes: [0 1 2 3 4 5 6 7 8 9]\n"
+          ]
+        }
+      ],
+      "source": [
+        "import tensorflow as tf\n",
+        "import numpy as np\n",
+        "\n",
+        "# Load the MNIST handwritten digit dataset\n",
+        "(x_train, y_train), (x_test, y_test) = (\n",
+        "    tf.keras.datasets.mnist.load_data()\n",
+        ")\n",
+        "\n",
+        "print(\"MNIST Dataset Loaded Successfully\")\n",
+        "print(\"-\" * 40)\n",
+        "\n",
+        "print(\"Training images shape:\", x_train.shape)\n",
+        "print(\"Training labels shape:\", y_train.shape)\n",
+        "\n",
+        "print(\"Testing images shape:\", x_test.shape)\n",
+        "print(\"Testing labels shape:\", y_test.shape)\n",
+        "\n",
+        "print(\"Total training images:\", len(x_train))\n",
+        "print(\"Total testing images:\", len(x_test))\n",
+        "print(\"Total images:\", len(x_train) + len(x_test))\n",
+        "\n",
+        "print(\"Image height:\", x_train.shape[1])\n",
+        "print(\"Image width:\", x_train.shape[2])\n",
+        "\n",
+        "print(\"Number of classes:\", len(np.unique(y_train)))\n",
+        "print(\"Digit classes:\", np.unique(y_train))"
+      ]
+    }
+  ]
+}
