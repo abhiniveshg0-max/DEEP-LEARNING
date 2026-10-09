@@ -1,0 +1,284 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMtavCm4+D5wQeKpanDxv//",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/abhiniveshg0-max/DEEP-LEARNING/blob/main/experiment%20%207%20part%20b\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 1000
+        },
+        "id": "yEhDcIPULO6T",
+        "outputId": "26335857-a5f9-4a38-bbd5-efe1a6f85a95"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Student Name: YOUR NAME\n",
+            "Student Roll No: YOUR ROLL NUMBER\n",
+            "\n",
+            "GENERATOR MODEL SUMMARY\n"
+          ]
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "\u001b[1mModel: \"Generator\"\u001b[0m\n"
+            ],
+            "text/html": [
+              "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><span style=\"font-weight: bold\">Model: \"Generator\"</span>\n",
+              "</pre>\n"
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n",
+              "┃\u001b[1m \u001b[0m\u001b[1mLayer (type)                   \u001b[0m\u001b[1m \u001b[0m┃\u001b[1m \u001b[0m\u001b[1mOutput Shape          \u001b[0m\u001b[1m \u001b[0m┃\u001b[1m \u001b[0m\u001b[1m      Param #\u001b[0m\u001b[1m \u001b[0m┃\n",
+              "┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n",
+              "│ dense (\u001b[38;5;33mDense\u001b[0m)                   │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m6272\u001b[0m)           │       \u001b[38;5;34m627,200\u001b[0m │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ batch_normalization             │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m6272\u001b[0m)           │        \u001b[38;5;34m25,088\u001b[0m │\n",
+              "│ (\u001b[38;5;33mBatchNormalization\u001b[0m)            │                        │               │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ re_lu (\u001b[38;5;33mReLU\u001b[0m)                    │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m6272\u001b[0m)           │             \u001b[38;5;34m0\u001b[0m │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ reshape (\u001b[38;5;33mReshape\u001b[0m)               │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m7\u001b[0m, \u001b[38;5;34m7\u001b[0m, \u001b[38;5;34m128\u001b[0m)      │             \u001b[38;5;34m0\u001b[0m │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ conv2d_transpose                │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m14\u001b[0m, \u001b[38;5;34m14\u001b[0m, \u001b[38;5;34m64\u001b[0m)     │       \u001b[38;5;34m204,800\u001b[0m │\n",
+              "│ (\u001b[38;5;33mConv2DTranspose\u001b[0m)               │                        │               │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ batch_normalization_1           │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m14\u001b[0m, \u001b[38;5;34m14\u001b[0m, \u001b[38;5;34m64\u001b[0m)     │           \u001b[38;5;34m256\u001b[0m │\n",
+              "│ (\u001b[38;5;33mBatchNormalization\u001b[0m)            │                        │               │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ re_lu_1 (\u001b[38;5;33mReLU\u001b[0m)                  │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m14\u001b[0m, \u001b[38;5;34m14\u001b[0m, \u001b[38;5;34m64\u001b[0m)     │             \u001b[38;5;34m0\u001b[0m │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ conv2d_transpose_1              │ (\u001b[38;5;45mNone\u001b[0m, \u001b[38;5;34m28\u001b[0m, \u001b[38;5;34m28\u001b[0m, \u001b[38;5;34m1\u001b[0m)      │         \u001b[38;5;34m1,601\u001b[0m │\n",
+              "│ (\u001b[38;5;33mConv2DTranspose\u001b[0m)               │                        │               │\n",
+              "└─────────────────────────────────┴────────────────────────┴───────────────┘\n"
+            ],
+            "text/html": [
+              "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n",
+              "┃<span style=\"font-weight: bold\"> Layer (type)                    </span>┃<span style=\"font-weight: bold\"> Output Shape           </span>┃<span style=\"font-weight: bold\">       Param # </span>┃\n",
+              "┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n",
+              "│ dense (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">Dense</span>)                   │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">6272</span>)           │       <span style=\"color: #00af00; text-decoration-color: #00af00\">627,200</span> │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ batch_normalization             │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">6272</span>)           │        <span style=\"color: #00af00; text-decoration-color: #00af00\">25,088</span> │\n",
+              "│ (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">BatchNormalization</span>)            │                        │               │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ re_lu (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">ReLU</span>)                    │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">6272</span>)           │             <span style=\"color: #00af00; text-decoration-color: #00af00\">0</span> │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ reshape (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">Reshape</span>)               │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">7</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">7</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">128</span>)      │             <span style=\"color: #00af00; text-decoration-color: #00af00\">0</span> │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ conv2d_transpose                │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">14</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">14</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">64</span>)     │       <span style=\"color: #00af00; text-decoration-color: #00af00\">204,800</span> │\n",
+              "│ (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">Conv2DTranspose</span>)               │                        │               │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ batch_normalization_1           │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">14</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">14</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">64</span>)     │           <span style=\"color: #00af00; text-decoration-color: #00af00\">256</span> │\n",
+              "│ (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">BatchNormalization</span>)            │                        │               │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ re_lu_1 (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">ReLU</span>)                  │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">14</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">14</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">64</span>)     │             <span style=\"color: #00af00; text-decoration-color: #00af00\">0</span> │\n",
+              "├─────────────────────────────────┼────────────────────────┼───────────────┤\n",
+              "│ conv2d_transpose_1              │ (<span style=\"color: #00d7ff; text-decoration-color: #00d7ff\">None</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">28</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">28</span>, <span style=\"color: #00af00; text-decoration-color: #00af00\">1</span>)      │         <span style=\"color: #00af00; text-decoration-color: #00af00\">1,601</span> │\n",
+              "│ (<span style=\"color: #0087ff; text-decoration-color: #0087ff\">Conv2DTranspose</span>)               │                        │               │\n",
+              "└─────────────────────────────────┴────────────────────────┴───────────────┘\n",
+              "</pre>\n"
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "\u001b[1m Total params: \u001b[0m\u001b[38;5;34m858,945\u001b[0m (3.28 MB)\n"
+            ],
+            "text/html": [
+              "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><span style=\"font-weight: bold\"> Total params: </span><span style=\"color: #00af00; text-decoration-color: #00af00\">858,945</span> (3.28 MB)\n",
+              "</pre>\n"
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "\u001b[1m Trainable params: \u001b[0m\u001b[38;5;34m846,273\u001b[0m (3.23 MB)\n"
+            ],
+            "text/html": [
+              "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><span style=\"font-weight: bold\"> Trainable params: </span><span style=\"color: #00af00; text-decoration-color: #00af00\">846,273</span> (3.23 MB)\n",
+              "</pre>\n"
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "\u001b[1m Non-trainable params: \u001b[0m\u001b[38;5;34m12,672\u001b[0m (49.50 KB)\n"
+            ],
+            "text/html": [
+              "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"><span style=\"font-weight: bold\"> Non-trainable params: </span><span style=\"color: #00af00; text-decoration-color: #00af00\">12,672</span> (49.50 KB)\n",
+              "</pre>\n"
+            ]
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Random Noise Vector Shape: (1, 100)\n",
+            "Generated Image Shape: (1, 28, 28, 1)\n",
+            "Minimum Pixel Value: -0.0816369354724884\n",
+            "Maximum Pixel Value: 0.07385020703077316\n"
+          ]
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<Figure size 500x500 with 1 Axes>"
+            ],
+            "image/png": "iVBORw0KGgoAAAANSUhEUgAAAZQAAAGrCAYAAADn6WHYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQAAKLBJREFUeJzt3Xt01PWd//FXbpPJBcLFYDBiws1SUKvFAy6CoFzCTSoKCFZuuoiKIG5RoV6A6hZhdZd6WVbwiEqjtIF2FyzUotJVqa7uilhFbbgrWm5CIAm5f35/uJkfk0lg8ubDAN3n4xzPkZn5zPfzvc0r35nJK3HOOScAAE5S/OmeAADgbwOBAgDwgkABAHhBoAAAvCBQAABeECgAAC8IFACAFwQKAMALAgUA4AWBAuXm5mrChAmnexp/0/bs2aMRI0aoZcuWiouL08KFC0/3lHCMF154QXFxcdqxY0ejx/7xj39UXFyc/vjHP3qf19nmrA6U7du366677tKFF16o1NRUpaamqnPnzpoyZYo+/vjj0z09r9asWaM5c+ac1jnExcXprrvuOq1zONX69OmjuLi40H+BQEBt27bVbbfdpi+//NL8vPfcc49ee+01zZo1S8uWLdPAgQM9zvrkHD58WP/4j/+oyy+/XBkZGUpOTlZOTo5uvPFG/e53v2tw3Jo1axQXF6fzzjtPNTU19T4mNzdXcXFxmjp1asR9tS/EK1asaHAZdfdHQ/+d7nMD30k83ROwevXVV3XjjTcqMTFRP/7xj/WDH/xA8fHx+vzzz/Wb3/xGixYt0vbt25WTk3O6p+rFmjVr9Mwzz3DixMD555+vefPmSZIqKiq0efNm/du//Ztee+01ffbZZ0pNTW30c7755pv60Y9+pBkzZvie7knZsmWL8vLytHPnTg0fPlzjxo1Tenq6vvzyS61Zs0ZDhw7VSy+9pLFjx0aMzc/PV25urnbs2KE333xT/fr1a3A5S5Ys0axZs3Teeec1an4PPPCA/v7v/z707w8++EBPPvmkfvrTn+r73/9+6PZLLrmkUc9b19ixYzV69GglJyc3euxVV12lo0ePKhAInNQc/haclYGydetWjR49Wjk5OXrjjTfUunXrsPvnz5+vf/3Xf1V8/Jl7AVZSUqK0tLTTPQ3UIyMjQzfffHPYbW3bttVdd92lDRs2qH///o1+zr1796pZs2aeZiiVlZUpEAic1DFeVVWl4cOHa8+ePfrP//xPXXnllWH3z549W3/4wx9UXV0dMbakpET/8R//oXnz5mnp0qXKz89vMFC6dOmiL774Qo899piefPLJRs2x7rYOBoN68skn1b9/f/Xp06fBcY09vxISEpSQkNCoudWKj49XMBg0jf1bc+a+4h7HggULVFJSoqVLl0aEiSQlJiZq2rRpatOmTdjtn3/+uUaMGKEWLVooGAzq8ssv16pVq8IeU/te6oYNG/QP//APyszMVFpamoYPH659+/ZFLGvt2rXq1auX0tLS1KRJEw0ZMkSffvpp2GMmTJig9PR0bd26VYMHD1aTJk304x//WJL09ttva+TIkbrggguUnJysNm3a6J577tHRo0fDxj/zzDOSFHaZX6umpkYLFy5Uly5dFAwGde6552ry5Mk6ePBg2Dycc3r00Ud1/vnnKzU1VVdffXXEXBuj9i2LX//615o7d66ys7PVpEkTjRgxQkVFRSovL9f06dPVqlUrpaena+LEiSovLw97jqVLl+qaa65Rq1atlJycrM6dO2vRokURy6qpqdGcOXN03nnnhea+efPmej//OXTokKZPn642bdooOTlZHTp00Pz58xt8WyYaWVlZkr47to61e/du3XLLLTr33HOVnJysLl266Pnnnw/dX3s8Oef0zDPPROy7bdu2aeTIkWrRooVSU1N1xRVXRLzNVLudly9frgcffFDZ2dlKTU3V4cOHJUn/9V//pYEDByojI0Opqanq3bu3NmzYcMJ1Kigo0CeffKKHHnooIkxqDRgwQIMGDYq4/be//a2OHj2qkSNHavTo0frNb36jsrKyep8jNzdX48aN05IlS/T111+fcF6NNWfOHMXFxWnz5s266aab1Lx5c/Xs2VOS9PHHH2vChAlq166dgsGgsrKydMstt+jAgQNhz1HfZyi5ubkaOnSo3nnnHXXr1k3BYFDt2rXTSy+9FDa2vs9Q+vTpo4suukibN2/W1VdfrdTUVGVnZ2vBggUR89+5c6eGDRumtLQ0tWrVKvT26Nn4ucxZeYXy6quvqkOHDurevXvUYz799FNdeeWVys7O1syZM5WWlqZf//rXuu6667Ry5UoNHz487PFTp05V8+bNNXv2bO3YsUMLFy7UXXfdpV/96lehxyxbtkzjx49XXl6e5s+fr9LSUi1atEg9e/bUxo0blZubG3psVVWV8vLy1LNnTz3++OOht00KCgpUWlqqO+64Qy1bttT777+vp556Sl999ZUKCgokSZMnT9bXX3+tdevWadmyZRHrNnnyZL3wwguaOHGipk2bpu3bt+vpp5/Wxo0btWHDBiUlJUmSHn74YT366KMaPHiwBg8erA8//FADBgxQRUVF1NuxPvPmzVNKSopmzpypLVu26KmnnlJSUpLi4+N18OBBzZkzR++9955eeOEFtW3bVg8//HBo7KJFi9SlSxcNGzZMiYmJWr16te68807V1NRoypQpocfNmjVLCxYs0LXXXqu8vDxt2rRJeXl5ES9ipaWl6t27t3bv3q3Jkyfrggsu0J/+9CfNmjVL33zzTVQfhldXV2v//v2SpMrKSn322WeaPXu2OnToEPbCu2fPHl1xxRWhz5YyMzO1du1a3XrrrTp8+LCmT5+uq666SsuWLdPYsWPVv39/jRs3Lmx8jx49VFpaqmnTpqlly5Z68cUXNWzYMK1YsSLimHzkkUcUCAQ0Y8YMlZeXKxAI6M0339SgQYPUtWtXzZ49W/Hx8aGQfvvtt9WtW7cG13P16tWSFHE1Fo38/HxdffXVysrK0ujRozVz5kytXr1aI0eOrPfxDzzwgF566SXTVUq0Ro4cqY4dO+rnP/+5av8qx7p167Rt2zZNnDhRWVlZ+vTTT7V48WJ9+umneu+998LCvT5btmzRiBEjdOutt2r8+PF6/vnnNWHCBHXt2lVdunQ57tiDBw9q4MCBuv766zVq1CitWLFC999/vy6++OJQSJeUlOiaa67RN998o7vvvltZWVl6+eWXtX79ej8bJdbcWaaoqMhJctddd13EfQcPHnT79u0L/VdaWhq6r2/fvu7iiy92ZWVlodtqampcjx49XMeOHUO3LV261Ely/fr1czU1NaHb77nnHpeQkOAOHTrknHPuyJEjrlmzZm7SpElhc/jrX//qMjIywm4fP368k+RmzpwZMedj51hr3rx5Li4uzu3cuTN025QpU1x9u+vtt992klx+fn7Y7b///e/Dbt+7d68LBAJuyJAhYev105/+1Ely48ePj3juuiS5KVOmhP69fv16J8lddNFFrqKiInT7mDFjXFxcnBs0aFDY+L/7u79zOTk5J1z/vLw8165du9C///rXv7rExMSIfT5nzpyIuT/yyCMuLS3N/eUvfwl77MyZM11CQoLbtWvXcdexd+/eTlLEf9///vfdtm3bwh576623utatW7v9+/eH3T569GiXkZERtm51t51zzk2fPt1Jcm+//XbotiNHjri2bdu63NxcV11d7Zz7/9u5Xbt2Yc9ZU1PjOnbs6PLy8sL2aWlpqWvbtq3r37//cdf1sssuc82aNYu4vbi4OOw8KioqCrt/z549LjEx0S1ZsiR0W48ePdyPfvSjiOfKyclxQ4YMcc45N3HiRBcMBt3XX38dtl4FBQXHneexCgoKnCS3fv360G2zZ892ktyYMWMiHl/f8fXKK684Se6tt94K3VZ73m/fvj1s7nUft3fvXpecnOx+8pOfhG6rXY9j51R7HL300kuh28rLy11WVpa74YYbQrc98cQTTpL793//99BtR48edZ06dYp4zrPBWfeWV+1lfnp6esR9ffr0UWZmZui/2reJvv32W7355psaNWqUjhw5ov3792v//v06cOCA8vLyVFhYqN27d4c912233Rb200uvXr1UXV2tnTt3SvruJ59Dhw5pzJgxoefbv3+/EhIS1L1793p/wrjjjjsibktJSQn9f0lJifbv368ePXrIOaeNGzeecHsUFBQoIyND/fv3D5tH165dlZ6eHprH66+/roqKCk2dOjVsvaZPn37CZZzIuHHjQldBktS9e3c553TLLbeEPa579+768ssvVVVVFbrt2PUvKirS/v371bt3b23btk1FRUWSpDfeeENVVVW68847w56vvm8OFRQUqFevXmrevHnY9ujXr5+qq6v11ltvnXB9cnNztW7dOq1bt05r167VwoULVVRUpEGDBoXe9nTOaeXKlbr22mvlnAtbVl5enoqKivThhx8edzlr1qxRt27dQm/PSN8d17fddpt27NihzZs3hz1+/PjxYdvro48+UmFhoW666SYdOHAgtPySkhL17dtXb7311nHf5jt8+HC959EDDzwQdh7ddNNNYfcvX75c8fHxuuGGG0K3jRkzRmvXro14m/VYDz74oKqqqvTYY481vFFOwu233x5x27Hbq6ysTPv379cVV1whSSfcP5LUuXNn9erVK/TvzMxMfe9739O2bdtOODY9PT3s6i8QCKhbt25hY3//+98rOztbw4YNC90WDAY1adKkEz7/meise8urSZMmkqTi4uKI+5599lkdOXJEe/bsCduRW7ZskXNODz30kB566KF6n3fv3r3Kzs4O/fuCCy4Iu7958+aSFDphCgsLJUnXXHNNvc/XtGnTsH8nJibq/PPPj3jcrl279PDDD2vVqlURJ2PtC+rxFBYWqqioSK1atar3/r1790pSKAg7duwYdn9mZmZo3azqbquMjAxJivgMKyMjQzU1NSoqKlLLli0lSRs2bNDs2bP17rvvqrS0NOzxRUVFysjICM29Q4cOYfe3aNEiYu6FhYX6+OOPlZmZWe9ca7fH8aSlpYV9wDxw4ED17NlTl19+uR577DE98cQT2rdvnw4dOqTFixdr8eLFpmXt3Lmz3rdta7+9tHPnTl100UWh29u2bRv2uNpjcPz48Q0uo6ioqMH926RJk4jPEiTpzjvv1NChQyXV/3bYL3/5S3Xr1k0HDhwIjb/ssstUUVGhgoIC3XbbbfUur127dho7dqwWL16smTNnNjhnq7rbR/ruh8m5c+dq+fLlEfsjmvOr7rEtffdacLzgrHX++edHvKXWvHnzsF9p2Llzp9q3bx/xuLrH+tnirAuUjIwMtW7dWp988knEfbUnZ91fTqr9KW3GjBnKy8ur93nr7sCGvvHh/ve92drnXLZsWegD22PV/fA2OTk54hs51dXV6t+/v7799lvdf//96tSpk9LS0rR7925NmDAhqg+Ra2pq1KpVK+Xn59d7f0MvrD41tK1OtA23bt2qvn37qlOnTvrnf/5ntWnTRoFAQGvWrNG//Mu/mD5Er6mpUf/+/XXffffVe/+FF17Y6OeUpK5duyojIyN0hVM7t5tvvrnBF/ST/SprXcf+tH3sHP7pn/5Jl156ab1j6rsCqdWpUyd99NFH2r17d9gPUxdeeGFoO9X99lJhYaE++OADSZE/nEjffbbSUKBI3139LFu2TPPnz9d1113X4OMs6m4fSRo1apT+9Kc/6d5779Wll16q9PR01dTUaODAgVEdXyc6hk/V2LPVWRcokjRkyBA999xzev/994/7oWOtdu3aSZKSkpKO+135xmjfvr0kqVWrVubn/POf/6y//OUvevHFF8M+rF23bl3EYxv68LB9+/Z6/fXXdeWVV9Z7QtWq/X2cwsLC0PaQpH379kX109apsHr1apWXl2vVqlVhPwnWfbuwdu5btmwJ+yn0wIEDEXNv3769iouLve3nY1VXV4eujDMzM9WkSRNVV1ebl5WTk6Mvvvgi4vbPP/88dP/x1B6DTZs2Nc1h6NChWr58ufLz8xsM4Lry8/OVlJSkZcuWRbxgvvPOO3ryySe1a9euen+yr53zzTffrGeffbZRX6qxOHjwoN544w3NnTs37IsgtVd2Z4KcnBxt3rxZzrmwc3zLli2ncVZ2Z91nKJJ03333KTU1Vbfccov27NkTcX/dnwBatWqlPn366Nlnn9U333wT8fj6vg58Inl5eWratKl+/vOfq7Ky0vSctSfksfN1zukXv/hFxGNrv1N/6NChsNtHjRql6upqPfLIIxFjqqqqQo/v16+fkpKS9NRTT4Ut73RWgNS3/kVFRVq6dGnY4/r27avExMSIrxM//fTTEc85atQovfvuu3rttdci7jt06FDY5zeNsX79ehUXF+sHP/hBaO433HCDVq5cWe/VcjT7f/DgwXr//ff17rvvhm4rKSnR4sWLlZubq86dOx93fNeuXdW+fXs9/vjj9b4FfKI5jBo1Sp07d9Yjjzyi9957r97H1D2X8vPz1atXL914440aMWJE2H/33nuvJOmVV1457nIffPBBVVZW1vsVWp/qO76k03vM15WXl6fdu3eH/fpCWVmZlixZchpnZXdWXqF07NhRL7/8ssaMGaPvfe97od+Ud85p+/btevnllxUfHx/2mcUzzzyjnj176uKLL9akSZPUrl077dmzR++++66++uorbdq0qVFzaNq0qRYtWqSxY8fqhz/8oUaPHq3MzEzt2rVLv/vd73TllVfW+4J3rE6dOql9+/aaMWOGdu/eraZNm2rlypX1XjF07dpVkjRt2jTl5eUpISFBo0ePVu/evTV58mTNmzdPH330kQYMGKCkpCQVFhaqoKBAv/jFLzRixAhlZmZqxowZmjdvnoYOHarBgwdr48aNWrt2rc4555xGrbsvAwYMUCAQ0LXXXqvJkyeruLhYS5YsUatWrcKC/9xzz9Xdd9+tJ554QsOGDdPAgQO1adOm0NyP/cnu3nvv1apVqzR06NDQ1ztLSkr05z//WStWrNCOHTtOuL5FRUX65S9/Kem7UP7iiy+0aNGi0Fejaz322GNav369unfvrkmTJqlz58769ttv9eGHH+r111/Xt99+e9zlzJw5U6+88ooGDRqkadOmqUWLFnrxxRe1fft2rVy58oS/tBgfH6/nnntOgwYNUpcuXTRx4kRl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\n"
+          },
+          "metadata": {}
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Generator implemented successfully!\n",
+            "Input: Random noise vector of dimension 100\n",
+            "Output: 28 x 28 grayscale image\n",
+            "Output activation: Tanh\n",
+            "Status: Ready for GAN training\n"
+          ]
+        }
+      ],
+      "source": [
+        "# PART B: IMPLEMENTING THE GENERATOR\n",
+        "# Student Name: YOUR NAME\n",
+        "# Student Roll No: YOUR ROLL NUMBER\n",
+        "\n",
+        "import tensorflow as tf\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "# Display student details\n",
+        "print(\"Student Name: YOUR NAME\")\n",
+        "print(\"Student Roll No: YOUR ROLL NUMBER\")\n",
+        "\n",
+        "# Step 1: Define random noise vector dimension\n",
+        "latent_dim = 100\n",
+        "\n",
+        "# Step 2: Create the Generator model\n",
+        "generator = tf.keras.Sequential([\n",
+        "    tf.keras.layers.Input(shape=(latent_dim,)),\n",
+        "\n",
+        "    # Fully connected layer\n",
+        "    tf.keras.layers.Dense(7 * 7 * 128, use_bias=False),\n",
+        "\n",
+        "    # Normalize activations\n",
+        "    tf.keras.layers.BatchNormalization(),\n",
+        "    tf.keras.layers.ReLU(),\n",
+        "\n",
+        "    # Reshape feature maps\n",
+        "    tf.keras.layers.Reshape((7, 7, 128)),\n",
+        "\n",
+        "    # Upsample from 7x7 to 14x14\n",
+        "    tf.keras.layers.Conv2DTranspose(\n",
+        "        64,\n",
+        "        kernel_size=5,\n",
+        "        strides=2,\n",
+        "        padding=\"same\",\n",
+        "        use_bias=False\n",
+        "    ),\n",
+        "    tf.keras.layers.BatchNormalization(),\n",
+        "    tf.keras.layers.ReLU(),\n",
+        "\n",
+        "    # Upsample from 14x14 to 28x28\n",
+        "    tf.keras.layers.Conv2DTranspose(\n",
+        "        1,\n",
+        "        kernel_size=5,\n",
+        "        strides=2,\n",
+        "        padding=\"same\",\n",
+        "        activation=\"tanh\"\n",
+        "    )\n",
+        "], name=\"Generator\")\n",
+        "\n",
+        "# Step 3: Display Generator architecture\n",
+        "print(\"\\nGENERATOR MODEL SUMMARY\")\n",
+        "generator.summary()\n",
+        "\n",
+        "# Step 4: Generate a random noise vector\n",
+        "noise = tf.random.normal([1, latent_dim])\n",
+        "\n",
+        "print(\"\\nRandom Noise Vector Shape:\", noise.shape)\n",
+        "\n",
+        "# Step 5: Generate an image before GAN training\n",
+        "generated_image = generator(noise, training=False)\n",
+        "\n",
+        "print(\"Generated Image Shape:\", generated_image.shape)\n",
+        "print(\"Minimum Pixel Value:\",\n",
+        "      float(tf.reduce_min(generated_image)))\n",
+        "print(\"Maximum Pixel Value:\",\n",
+        "      float(tf.reduce_max(generated_image)))\n",
+        "\n",
+        "# Step 6: Display the generated image\n",
+        "image = (generated_image[0, :, :, 0] + 1.0) / 2.0\n",
+        "\n",
+        "plt.figure(figsize=(5, 5))\n",
+        "plt.imshow(image.numpy(), cmap=\"gray\", vmin=0, vmax=1)\n",
+        "plt.title(\"Generated Image Before GAN Training\")\n",
+        "plt.axis(\"off\")\n",
+        "plt.show()\n",
+        "\n",
+        "# Step 7: Verify the output\n",
+        "assert generated_image.shape == (1, 28, 28, 1)\n",
+        "assert np.isfinite(generated_image.numpy()).all()\n",
+        "\n",
+        "print(\"\\nGenerator implemented successfully!\")\n",
+        "print(\"Input: Random noise vector of dimension 100\")\n",
+        "print(\"Output: 28 x 28 grayscale image\")\n",
+        "print(\"Output activation: Tanh\")\n",
+        "print(\"Status: Ready for GAN training\")"
+      ]
+    }
+  ]
+}
