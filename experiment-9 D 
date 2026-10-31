@@ -1,0 +1,131 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNyvpeboWs5R3s+jC1JYl75",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/abhiniveshg0-max/DEEP-LEARNING/blob/main/experiment-9%20D%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 280
+        },
+        "id": "RB-IJ47BAUKQ",
+        "outputId": "9755e176-8a63-437f-f7a7-f66aef1bf8a7"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Student Roll Nos: 2XXXXXXXX, 2XXXXXXXX\n",
+            "------------------------------------------------------------\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'predict_sentiment' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipykernel_3045/2161509512.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     23\u001b[0m \u001b[0mrows\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     24\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mtext\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtrue_label\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mtest_samples\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 25\u001b[0;31m     \u001b[0mpred\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mconf\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpredict_sentiment\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     26\u001b[0m     rows.append({\"Text\": text, \"Actual\": true_label, \"Predicted\": pred,\n\u001b[1;32m     27\u001b[0m                  \"Confidence\": f\"{conf:.2%}\", \"Correct\": \"Yes\" if pred == true_label else \"No\"})\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'predict_sentiment' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "# Experiment 9 - Part D: Model Testing and Output Analysis\n",
+        "# Student Roll Nos: 2XXXXXXXX, 2XXXXXXXX   <-- replace with your roll numbers\n",
+        "\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay\n",
+        "\n",
+        "print(\"Student Roll Nos: 2XXXXXXXX, 2XXXXXXXX\")   # <-- replace here too\n",
+        "print(\"-\" * 60)\n",
+        "\n",
+        "# ---------- 1. Test the fine-tuned BERT model on positive and negative inputs ----------\n",
+        "test_samples = [\n",
+        "    (\"An outstanding film with brilliant performances and a touching story.\", \"Positive\"),\n",
+        "    (\"I loved every minute of it. Highly recommended!\", \"Positive\"),\n",
+        "    (\"A wonderful, heartwarming movie that I would watch again.\", \"Positive\"),\n",
+        "    (\"The plot was dull and the acting was terrible.\", \"Negative\"),\n",
+        "    (\"Worst movie ever. A complete waste of money and time.\", \"Negative\"),\n",
+        "    (\"I was bored and almost walked out of the cinema.\", \"Negative\"),\n",
+        "    (\"The film was not good at all.\", \"Negative\"),\n",
+        "    (\"It was not bad, actually quite enjoyable.\", \"Positive\"),\n",
+        "]\n",
+        "\n",
+        "rows = []\n",
+        "for text, true_label in test_samples:\n",
+        "    pred, conf = predict_sentiment(text)\n",
+        "    rows.append({\"Text\": text, \"Actual\": true_label, \"Predicted\": pred,\n",
+        "                 \"Confidence\": f\"{conf:.2%}\", \"Correct\": \"Yes\" if pred == true_label else \"No\"})\n",
+        "df_bert = pd.DataFrame(rows)\n",
+        "pd.set_option(\"display.max_colwidth\", 70)\n",
+        "print(\"========== BERT CLASSIFICATION RESULTS ==========\")\n",
+        "print(df_bert.to_string(index=False))\n",
+        "print(\"\\nCorrect predictions:\", (df_bert[\"Correct\"] == \"Yes\").sum(), \"/\", len(df_bert))\n",
+        "\n",
+        "# ---------- 2. Analyse results using evaluation metrics (full test subset) ----------\n",
+        "print(\"\\n========== CLASSIFICATION REPORT (test subset) ==========\")\n",
+        "print(classification_report(all_labels, all_preds, target_names=[\"Negative\", \"Positive\"]))\n",
+        "\n",
+        "cm = confusion_matrix(all_labels, all_preds)\n",
+        "ConfusionMatrixDisplay(cm, display_labels=[\"Negative\", \"Positive\"]).plot(cmap=\"Blues\")\n",
+        "plt.title(\"BERT Confusion Matrix (Roll Nos: 2XXXXXXXX, 2XXXXXXXX)\")   # <-- replace\n",
+        "plt.show()\n",
+        "\n",
+        "# ---------- 3. Test the seq2seq model with different inputs and settings ----------\n",
+        "test_inputs = [\n",
+        "    \"summarize: Climate change is causing sea levels to rise and weather patterns to become \"\n",
+        "    \"more extreme. Scientists say that reducing carbon emissions quickly is essential to \"\n",
+        "    \"limit the damage to coastal cities, farming and wildlife around the world.\",\n",
+        "    \"summarize: The new smartphone has a faster processor, a better camera and a longer \"\n",
+        "    \"lasting battery. Reviewers praised its display but criticised its high price.\",\n",
+        "    \"translate English to German: Where is the nearest train station?\",\n",
+        "]\n",
+        "configs = [\n",
+        "    (\"Greedy, max_length=15\", dict(max_length=15, num_beams=1)),\n",
+        "    (\"Beam=4, max_length=40\", dict(max_length=40, num_beams=4)),\n",
+        "    (\"Sampling, temp=0.9\",    dict(max_length=40, num_beams=1, do_sample=True, temperature=0.9)),\n",
+        "]\n",
+        "\n",
+        "rows = []\n",
+        "for prompt in test_inputs:\n",
+        "    for cname, params in configs:\n",
+        "        out = generate_text(prompt, **params)\n",
+        "        rows.append({\"Input\": prompt[:55] + \"...\", \"Setting\": cname, \"Output\": out})\n",
+        "df_t5 = pd.DataFrame(rows)\n",
+        "print(\"\\n========== T5 GENERATION COMPARISON ==========\")\n",
+        "print(df_t5.to_string(index=False))\n",
+        "df_t5.to_csv(\"t5_comparison_outputs.csv\", index=False)"
+      ]
+    }
+  ]
+}
